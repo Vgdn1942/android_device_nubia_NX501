@@ -1,0 +1,13 @@
+diff --git a/config/common.mk b/config/common.mk
+index 378aa65..03d8561 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -57,7 +57,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
+     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+     ro.com.android.wifi-watchlist=GoogleGuest \
+     ro.setupwizard.enterprise_mode=1 \
+-    ro.com.android.dateformat=MM-dd-yyyy \
++    ro.com.android.dateformat=dd-MM-yyyy \
+     ro.com.android.dataroaming=false
+ 
+ PRODUCT_PROPERTY_OVERRIDES += \

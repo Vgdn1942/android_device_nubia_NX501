@@ -1,0 +1,30 @@
+# mount point	fstype		device							device2
+/boot		emmc		/dev/block/mmcblk0p7		flags=display="Boot"
+/cache		ext4		/dev/block/mmcblk0p18		flags=display="Cache"
+/data		ext4		/dev/block/mmcblk0p16		length=-16384	flags=display="Data"
+/misc		emmc		/dev/block/mmcblk0p12		flags=display="Misc";backup=1
+/recovery	emmc		/dev/block/mmcblk0p14		flags=display="Recovery";backup=1
+/system		ext4		/dev/block/mmcblk0p15		flags=display="System"
+/persist	ext4		/dev/block/mmcblk0p17		flags=display="Persist";backup=1
+/sdcard		vfat		/dev/block/mmcblk0p25		flags=display="SD Card"
+# modem
+/modem		emmc		/dev/block/mmcblk0p1		flags=backup=1;display=Modem
+/aboot		emmc		/dev/block/mmcblk0p5		flags=backup=1;subpartitionof=/modem
+/modemst1	emmc		/dev/block/mmcblk0p10		flags=backup=1;subpartitionof=/modem
+/modemst2	emmc		/dev/block/mmcblk0p11		flags=backup=1;subpartitionof=/modem
+/tz		emmc		/dev/block/mmcblk0p8		flags=backup=1;subpartitionof=/modem
+/rpm		emmc		/dev/block/mmcblk0p6		flags=backup=1;subpartitionof=/modem
+/sbl1		emmc		/dev/block/mmcblk0p2		flags=backup=1;subpartitionof=/modem
+/sbl2		emmc		/dev/block/mmcblk0p3		flags=backup=1;subpartitionof=/modem
+/sbl3		emmc		/dev/block/mmcblk0p4		flags=backup=1;subpartitionof=/modem
+# efs
+/m9kefs1	emmc		/dev/block/mmcblk0p20		flags=backup=1;display=Efs
+/m9kefs2	emmc		/dev/block/mmcblk0p21		flags=backup=1;subpartitionof=/m9kefs1
+/m9kefs3	emmc		/dev/block/mmcblk0p22		flags=backup=1;subpartitionof=/m9kefs1
+/m9kefsc	emmc		/dev/block/mmcblk0p24		flags=backup=1;subpartitionof=/m9kefs1
+# other
+/pad		emmc		/dev/block/mmcblk0p9		flags=backup=1;display=Others
+/splash		emmc		/dev/block/mmcblk0p13		flags=backup=1;subpartitionof=/pad
+/customfs	emmc		/dev/block/mmcblk0p19		flags=backup=1;subpartitionof=/pad
+/DDR		emmc		/dev/block/mmcblk0p23		flags=backup=1;subpartitionof=/pad
+/usbstorage	auto		/dev/block/sda1			/dev/block/sda	flags=display="USB Storage";storage;wipeingui;removable

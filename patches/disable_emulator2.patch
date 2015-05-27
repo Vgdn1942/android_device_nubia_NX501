@@ -1,0 +1,12 @@
+diff --git a/Android.mk b/Android.mk
+index de7b9d4..955d2ed 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -2,5 +2,5 @@
+ # through the 'm' or 'mm' build commands. if not, we use the
+ # standard QEMU Makefile
+ #
+-LOCAL_PATH:= $(call my-dir)
+-include $(LOCAL_PATH)/Makefile.android
++#LOCAL_PATH:= $(call my-dir)
++#include $(LOCAL_PATH)/Makefile.android

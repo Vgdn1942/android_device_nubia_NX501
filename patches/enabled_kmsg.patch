@@ -1,0 +1,85 @@
+From 20662a1c1f940d42c40cbb91691fdd45c8660be6 Mon Sep 17 00:00:00 2001
+From: root <xyyx@mail.ru>
+Date: Mon, 8 Sep 2014 14:37:37 +0900
+Subject: [PATCH] Added last_kmsg in nubia_board. Thanks to parheliamm
+
+---
+ arch/arm/mach-msm/board/nubia-board.c | 42 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/arch/arm/mach-msm/board/nubia-board.c b/arch/arm/mach-msm/board/nubia-board.c
+index 51784c4..d3a4d50 100755
+--- a/arch/arm/mach-msm/board/nubia-board.c
++++ b/arch/arm/mach-msm/board/nubia-board.c
+@@ -77,6 +77,9 @@
+ #include <mach/restart.h>
+ #include <mach/msm_iomap.h>
+ #include <mach/msm_serial_hs.h>
++#ifdef CONFIG_ANDROID_RAM_CONSOLE
++#include <linux/persistent_ram.h> 
++#endif
+ 
+ #include "../msm_watchdog.h"
+ #include "../board-8064.h"
+@@ -171,6 +174,37 @@
+ #define PCIE_PWR_EN_PMIC_GPIO 13
+ #define PCIE_RST_N_PMIC_MPP 1
+ 
++#ifdef CONFIG_ANDROID_RAM_CONSOLE
++static struct platform_device ram_console_device = {
++	.name = "ram_console",
++	.id = -1,
++};
++
++static struct persistent_ram_descriptor msm_prd[] __initdata = {
++	{
++		.name = "ram_console",
++		.size = SZ_1M,
++	},
++};
++  
++static struct persistent_ram msm_pr __initdata = {
++	.descs = msm_prd,
++	.num_descs = ARRAY_SIZE(msm_prd),
++	.size = SZ_1M,
++};
++
++void __init add_persistent_ram(void)
++{
++	struct persistent_ram *pram = &msm_pr;
++	struct membank* bank = &meminfo.bank[0];
++
++	pram->start = bank->start + bank->size - SZ_1M;
++
++	persistent_ram_early_init(pram);
++}
++
++#endif
++
+ #ifdef CONFIG_KERNEL_MSM_CONTIG_MEM_REGION
+ static unsigned msm_contig_mem_size = MSM_CONTIG_MEM_SIZE;
+ static int __init msm_contig_mem_size_setup(char *p)
+@@ -897,6 +931,11 @@ static void __init apq8064_reserve(void)
+ 	apq8064_set_display_params(prim_panel_name, ext_panel_name,
+ 		ext_resolution);
+ 	msm_reserve();
++
++#ifdef CONFIG_ANDROID_RAM_CONSOLE
++	add_persistent_ram();
++#endif
++
+ }
+ 
+ static void __init apq8064_early_reserve(void)
+@@ -4580,6 +4619,9 @@ static void __init apq8064_common_init(void)
+ 		platform_device_register(&msm_8960_riva);
+ 	}
+ 	BUG_ON(msm_pm_boot_init(&msm_pm_boot_pdata));
++#ifdef CONFIG_ANDROID_RAM_CONSOLE
++	platform_device_register(&ram_console_device);
++#endif
+ 	apq8064_epm_adc_init();
+ 	pr_err("***********************************************************\n");
+ 	pr_err("* This kernel only authorized for TDbeta nubia Z5(s) mini *\n");
+-- 
+2.1.1

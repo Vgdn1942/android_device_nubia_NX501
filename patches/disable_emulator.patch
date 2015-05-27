@@ -1,0 +1,13 @@
+diff --git a/core/main.mk b/core/main.mk
+index dca7d60..8092e29 100644
+--- a/core/main.mk
++++ b/core/main.mk
+@@ -230,9 +230,6 @@ endif
+ 
+ $(shell echo 'VERSIONS_CHECKED := $(VERSION_CHECK_SEQUENCE_NUMBER)' \
+         > $(OUT_DIR)/versions_checked.mk)
+-$(shell echo 'BUILD_EMULATOR ?= $(BUILD_EMULATOR)' \
+-        >> $(OUT_DIR)/versions_checked.mk)
+ 
+ # These are the modifier targets that don't do anything themselves, but
+ # change the behavior of the build.

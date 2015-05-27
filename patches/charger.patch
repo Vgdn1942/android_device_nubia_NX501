@@ -1,0 +1,54 @@
+From cbf563b8c21148c56ba57bef78f0b7f2f33ec642 Mon Sep 17 00:00:00 2001
+From: root <xyyx@mail.ru>
+Date: Mon, 21 Jul 2014 23:25:06 +0900
+Subject: [PATCH] Revert "Revert "Charger: Enable power off charge""
+
+This reverts commit 80a4a8bdfc7e9987202a925d412b2de3519015f1.
+---
+ drivers/power/pm8921-charger.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/power/pm8921-charger.c b/drivers/power/pm8921-charger.c
+index b604375..46c247a 100755
+--- a/drivers/power/pm8921-charger.c
++++ b/drivers/power/pm8921-charger.c
+@@ -4999,7 +4999,10 @@ void poweroff_charge_check(void)
+ 	int is_dc_on = 0;
+ 	int is_batt_on = 0;
+ 	int app_reboot_reason = 0;
+-	
++	char *append_cmdline=" androidboot.mode=%s";
++	char append_cmdline_buf[32] = { 0 };
++	extern char *saved_command_line;
++
+ 	poweroffchg_init();
+ 	
+ 	is_usb_on = is_usb_chg_plugged_in(the_chip);
+@@ -5009,9 +5012,9 @@ void poweroff_charge_check(void)
+ 	app_reboot_reason = __raw_readl(restart_reason);
+ 	__raw_writel(0, restart_reason);
+ 	
+-	printk("__is_usb_on=%d is_dc_on=%d is_batt_on=%d \n",
++	pr_debug("__is_usb_on=%d is_dc_on=%d is_batt_on=%d \n",
+ 		  is_usb_on,is_dc_on,is_batt_on);
+-	printk("__pm_poweron_reason=%d app_reboot_reason=0x%x\n",pm_poweron_reason,app_reboot_reason);
++	pr_debug("__pm_poweron_reason=%d app_reboot_reason=0x%x\n",pm_poweron_reason,app_reboot_reason);
+ 	
+ 	if( pm_poweron_reason == PM8XXX_RESTART_KPD )
+ 		goto_poweroffchg = 0;
+@@ -5025,7 +5028,12 @@ void poweroff_charge_check(void)
+ 	else
+ 		goto_poweroffchg = 0;
+ 
+-	printk("__goto_poweroffchg=%d\n",goto_poweroffchg);
++	pr_info("__goto_poweroffchg=%d\n",goto_poweroffchg);
++
++	pr_info("Modify fxxxing nubia code to support cm11 power off charge.");
++	snprintf(append_cmdline_buf, sizeof(append_cmdline_buf) - 1, 
++		append_cmdline, goto_poweroffchg ? ("charger"):("normal"));
++	strncat (saved_command_line, append_cmdline_buf, strlen(append_cmdline_buf));
+ }
+ 
+ #endif
+-- 
+2.1.1
