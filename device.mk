@@ -129,7 +129,6 @@ PRODUCT_PACKAGES += init.qcom.usb.sh
 PRODUCT_PACKAGES += init.target.rc
 PRODUCT_PACKAGES += ueventd.qcom.rc
 PRODUCT_PACKAGES += init.qcom.class_core.sh
-PRODUCT_PACKAGES += init.class_main.sh
 PRODUCT_PACKAGES += init.qcom.early_boot.sh
 PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
 
