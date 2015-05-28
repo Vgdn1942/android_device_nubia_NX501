@@ -1,5 +1,5 @@
 diff --git a/data/keyboards/Generic.kl b/data/keyboards/Generic.kl
-index f10ba96..9b7c762 100644
+index f10ba96..7172b5c 100644
 --- a/data/keyboards/Generic.kl
 +++ b/data/keyboards/Generic.kl
 @@ -121,7 +121,7 @@ key 98    NUMPAD_DIVIDE
@@ -11,6 +11,15 @@ index f10ba96..9b7c762 100644
  key 103   DPAD_UP
  key 104   PAGE_UP
  key 105   DPAD_LEFT
+@@ -247,7 +247,7 @@ key 224   BRIGHTNESS_DOWN
+ key 225   BRIGHTNESS_UP
+ key 226   HEADSETHOOK
+ 
+-key 256   BUTTON_1
++key 256   HEADSETHOOK
+ key 257   BUTTON_2
+ key 258   BUTTON_3
+ key 259   BUTTON_4
 diff --git a/packages/SettingsProvider/res/values/customize.xml b/packages/SettingsProvider/res/values/customize.xml
 index 410e7d4..525bc13 100644
 --- a/packages/SettingsProvider/res/values/customize.xml
@@ -25,7 +34,7 @@ index 410e7d4..525bc13 100644
      <!--
           Default Input Method, its value is from inputmethod's package name and main class name
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index c4f4455..8095460 100644
+index 1df1bfc..0dfc343 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 @@ -2985,6 +2985,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
