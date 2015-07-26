@@ -116,9 +116,11 @@ PRODUCT_COPY_FILES += \
 # Vendor lib
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
-    $(LOCAL_PATH)/lib/libqc-opt.so:system/lib/libqc-opt.so
-#    $(LOCAL_PATH)/lib/hw/sensors.has_gyro.so:system/lib/hw/sensors.has_gyro.so \
-#    $(LOCAL_PATH)/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
+    $(LOCAL_PATH)/lib/libqc-opt.so:system/lib/libqc-opt.so \
+    $(LOCAL_PATH)/lib/libsensorservice.so:system/lib/libsensorservice.so \
+    $(LOCAL_PATH)/lib/sensorservice:system/bin/sensorservice \
+    $(LOCAL_PATH)/lib/hw/sensors.has_gyro.so:system/lib/hw/sensors.has_gyro.so \
+    $(LOCAL_PATH)/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so
 
 # RAMDISK
 PRODUCT_PACKAGES += fstab.qcom
