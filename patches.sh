@@ -21,7 +21,7 @@ txtrst=$(tput sgr0) # Reset
 
 # Исправление кнопки "Home" и виброотклика
 if
-echo "${grn}Патч 'Исправление кнопки 'Home', виброотклика кнопок и формата даты'${txtrst}"
+echo "${grn}Патч 'Исправление кнопки 'Home' и виброотклика кнопок'${txtrst}"
 cat patches/frameworks.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
 then
 echo "${grn}Применён успешно!${txtrst}"
