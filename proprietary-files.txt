@@ -115,7 +115,6 @@ lib/libril-qcril-hook-oem.so
 # Sensors
 bin/sensors.qcom
 lib/libsensor1.so
-lib/hw/sensors.msm8960.so
 
 # Misc
 lib/libadsprpc.so
