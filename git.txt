@@ -5,6 +5,4 @@ git commit -a -m "Название коммита"
 
 Отправка на сервер:
 
-git push origin cm
-
-git push origin nubia_kernel_3.4.x_lp
+git push origin cm-12.1
