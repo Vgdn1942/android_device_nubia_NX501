@@ -4,7 +4,7 @@ DEVICE_PACKAGE_OVERLAYS += device/nubia/NX501/overlay
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
+PRODUCT_AAPT_CONFIG      := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 LOCAL_PATH := device/nubia/NX501
@@ -298,7 +298,7 @@ persist.service.adb.enable=1 \
 persist.service.debuggable=1 \
 persist.sys.usb.config=mtp
 
-LIBART_IMG_HOST_BASE_ADDRESS := 0x60000000
+LIBART_IMG_HOST_BASE_ADDRESS   := 0x60000000
 LIBART_IMG_TARGET_BASE_ADDRESS := 0x70000000
 
 # Assert

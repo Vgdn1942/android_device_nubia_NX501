@@ -32,7 +32,7 @@ BOARD_USES_QCOM_HARDWARE := true
 COMMON_GLOBAL_CFLAGS     += -DNO_SECURE_DISCARD
 
 # Architecture
-TARGET_ARCH := arm
+TARGET_ARCH               := arm
 TARGET_ARCH_VARIANT       := armv7-a-neon
 TARGET_CPU_ABI            := armeabi-v7a
 TARGET_CPU_ABI2           := armeabi
@@ -49,7 +49,7 @@ TARGET_KRAIT_BIONIC_BBTHRESH         := 64
 TARGET_KRAIT_BIONIC_PLDSIZE          := 64
 
 TARGET_USES_LOGD:=false
-BOARD_USES_LEGACY_MMAP := true
+BOARD_USES_LEGACY_MMAP  := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Bootloader
@@ -99,13 +99,13 @@ USE_OPENGL_RENDERER             := true
 TARGET_USES_C2D_COMPOSITION     := true
 HAVE_ADRENO_SOURCE              := false
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-#OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+#OVERRIDE_RS_DRIVER             := libRSDriver_adreno.so
 
 # Fix Netflix
 TARGET_NO_ADAPTIVE_PLAYBACK := true
 
 # Power HAL
-TARGET_POWERHAL_VARIANT:=qcom
+TARGET_POWERHAL_VARIANT := qcom
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
@@ -135,20 +135,20 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nubia/NX501/bluetooth
 # RIL class
 BOARD_RIL_CLASS := ../../../device/nubia/NX501/ril/
 
-#TARGET_NO_RECOVERY := true
 # Recovery
+#TARGET_NO_RECOVERY              := true
 #BOARD_TOUCH_RECOVERY            := true
-TARGET_RECOVERY_FSTAB           := device/nubia/NX501/rootdir/fstab.qcom
-RECOVERY_FSTAB_VERSION          := 2
+TARGET_RECOVERY_FSTAB            := device/nubia/NX501/rootdir/fstab.qcom
+RECOVERY_FSTAB_VERSION           := 2
 #BOARD_SUPPRESS_SECURE_ERASE     := true
-BOARD_HAS_NO_SELECT_BUTTON      := true
-BOARD_HAS_LARGE_FILESYSTEM      := true
+BOARD_HAS_NO_SELECT_BUTTON       := true
+BOARD_HAS_LARGE_FILESYSTEM       := true
 #BORAD_REC_LANG_CHINESE          := true
-TARGET_RECOVERY_PIXEL_FORMAT    := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT     := "RGBX_8888"
 #TARGET_RECOVERY_INITRC          := device/nubia/NX501/recovery/init.rc
-BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/NX501/recovery/graphics.c
-BOARD_USE_CUSTOM_RECOVERY_FONT  := \"roboto_23x41.h\"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+BOARD_CUSTOM_GRAPHICS            := ../../../device/nubia/NX501/recovery/graphics.c
+BOARD_USE_CUSTOM_RECOVERY_FONT   := \"roboto_23x41.h\"
+TARGET_USE_CUSTOM_LUN_FILE_PATH  := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
 # TWRP Recovery
 DEVICE_RESOLUTION                := 1080x1920
@@ -156,11 +156,11 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 #RECOVERY_SDCARD_ON_DATA         := true
 TW_INTERNAL_STORAGE_PATH         := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT  := "sdcard"
-#TW_EXTERNAL_STORAGE_PATH         := "/external_sd"
-#TW_EXTERNAL_STORAGE_MOUNT_POINT  := "external_sd"
+#TW_EXTERNAL_STORAGE_PATH        := "/external_sd"
+#TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_NO_REBOOT_BOOTLOADER          := true
 TW_HAS_DOWNLOAD_MODE             := false
-#TWRP_EVENT_LOGGING               := true
+#TWRP_EVENT_LOGGING              := true
 SP1_NAME                         := "persist"
 SP1_BACKUP_METHOD                := files
 SP1_MOUNTABLE                    := 1
@@ -175,7 +175,7 @@ BUILD_EMULATOR := false
 
 # Poweroff charger
 #BOARD_CHARGER_SHOW_PERCENTAGE := true
-RED_LED_PATH := "/sys/class/leds/red/brightness"
+RED_LED_PATH                   := "/sys/class/leds/red/brightness"
 
 -include device/qcom/sepolicy/sepolicy.mk
 
