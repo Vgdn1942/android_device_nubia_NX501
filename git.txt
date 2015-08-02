@@ -6,3 +6,4 @@ git commit -a -m "Название коммита"
 Отправка на сервер:
 
 git push origin cm-12.1
+git push origin cm-11.0
