@@ -146,7 +146,7 @@ BOARD_HAS_LARGE_FILESYSTEM       := true
 #BORAD_REC_LANG_CHINESE          := true
 TARGET_RECOVERY_PIXEL_FORMAT     := "RGBX_8888"
 #TARGET_RECOVERY_INITRC          := device/nubia/NX501/recovery/init.rc
-BOARD_CUSTOM_GRAPHICS           := ../../../device/nubia/NX501/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS            := ../../../device/nubia/NX501/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT   := \"roboto_23x41.h\"
 TARGET_USE_CUSTOM_LUN_FILE_PATH  := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 
