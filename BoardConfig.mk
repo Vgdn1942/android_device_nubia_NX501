@@ -65,7 +65,7 @@ BOARD_LIB_DUMPSTATE        := libdumpstate.NX501
 BOARD_EGL_CFG              := device/nubia/NX501/configs/egl.cfg
 
 # Kernel 
-BOARD_KERNEL_CMDLINE  := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE  := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=permissive androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE     := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
