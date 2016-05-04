@@ -1,11 +1,12 @@
 diff --git a/fmapp2/res/values/integers.xml b/fmapp2/res/values/integers.xml
-index a1698e1..05535d8 100644
+index dd17e2d..324428d 100644
 --- a/fmapp2/res/values/integers.xml
 +++ b/fmapp2/res/values/integers.xml
-@@ -29,5 +29,5 @@
+@@ -29,6 +29,6 @@
  -->
  <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
      <!-- Look at FmSharedPreferences.java for index -->
 -    <integer name="default_country_index">0</integer>
 +    <integer name="default_country_index">26</integer>
+     <integer name="default_record_duration_index">0</integer>
  </resources>
