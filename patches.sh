@@ -20,14 +20,14 @@ txtrst=$(tput sgr0) # Reset
 #sh patches/prebuilt_chromium/patch.sh $DSTDIR
 
 # Исправление кнопки "Home" и виброотклика
-if
-echo "${grn}Патч 'Исправление кнопки 'Home' и виброотклика кнопок'${txtrst}"
-cat patches/frameworks.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
-then
-echo "${grn}Применён успешно!${txtrst}"
-else
-echo "${red}Не применён!${txtrst}"
-fi
+#if
+#echo "${grn}Патч 'Исправление кнопки 'Home' и виброотклика кнопок'${txtrst}"
+#cat patches/frameworks.patch | patch -d $DSTDIR/frameworks/base/ -p1 -N -r -
+#then
+#echo "${grn}Применён успешно!${txtrst}"
+#else
+#echo "${red}Не применён!${txtrst}"
+#fi
 
 # Отключение блочной сборки
 #if
@@ -62,19 +62,8 @@ fi
 
 # sepolicy twrp cm12
 if
-echo "${grn}Патч 'sepolicy twrp cm12'${txtrst}"
-cat patches/twrp_sepolicy_cm12.patch | patch -d $DSTDIR/external/sepolicy/ -p1 -N -r -
-then
-echo "${grn}Применён успешно!${txtrst}"
-else
-echo "${red}Не применён!${txtrst}"
-fi
-
-# Отключение сборки эмулятора
-if
-echo "${grn}Патч 'disable emulator'${txtrst}"
-cat patches/disable_emulator.patch | patch -d $DSTDIR/build/ -p1 -N -r -
-cat patches/disable_emulator2.patch | patch -d $DSTDIR/external/qemu/ -p1 -N -r -
+echo "${grn}Патч 'sepolicy twrp lineage12'${txtrst}"
+cat patches/twrp_sepolicy_lineage12.patch | patch -d $DSTDIR/external/sepolicy/ -p1 -N -r -
 then
 echo "${grn}Применён успешно!${txtrst}"
 else

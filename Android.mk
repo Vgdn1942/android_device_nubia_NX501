@@ -23,10 +23,9 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-ifneq ($(filter NX501,$(TARGET_DEVICE)),)
-
 LOCAL_PATH := $(call my-dir)
 
+ifeq ($(TARGET_DEVICE),NX501)
 include $(call all-makefiles-under,$(LOCAL_PATH))
-
 endif
+

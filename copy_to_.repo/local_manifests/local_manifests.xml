@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-<project name="CyanogenMod/android_hardware_qcom_fm" path="hardware/qcom/fm" remote="github" revision="cm-12.1" />
-<project name="Vgdn1942/android_kernel_nubia_NX501" path="kernel/nubia/NX501" remote="github" revision="cm-12.1" />
+    <project name="LineageOS/android_hardware_qcom_fm" path="hardware/qcom/fm" remote="github" revision="cm-12.1" />
+    <project name="Vgdn1942/android_kernel_nubia_NX501" path="kernel/nubia/NX501" remote="github" revision="lineage-12.1" />
+    <project name="Vgdn1942/android_vendor_nubia_NX501" path="vendor/nubia/NX501" remote="github" revision="lineage-12.1" />
 </manifest>
 

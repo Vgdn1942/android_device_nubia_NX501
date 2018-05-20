@@ -1,8 +1,8 @@
 Добавление коммита:
 
-git add .
-git commit -a -m "Название коммита"
+git add -A
+git commit -m "Название коммита"
 
 Отправка на сервер:
 
-git push origin cm-12.1
+git push -u origin lineage-12.1

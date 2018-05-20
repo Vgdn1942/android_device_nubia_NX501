@@ -14,21 +14,10 @@
 # limitations under the License.
 #
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+-include device/nubia/NX501/device.mk
 
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/nubia/NX501/device_NX501.mk)
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
+PRODUCT_NAME := full_NX501
 PRODUCT_DEVICE := NX501
-PRODUCT_NAME := cm_NX501
-PRODUCT_BRAND := Nubia
-PRODUCT_MODEL := ZTE Nubia Z5
-PRODUCT_MANUFACTURER := ZTE
 
-#$(call inherit-product-if-exists, device/nubia/NX501/gapps-vendor.mk)
-#$(call inherit-product-if-exists, vendor/nubia/NX501/NX501-vendor.mk)
+PRODUCT_RESTRICT_VENDOR_FILES := false
+

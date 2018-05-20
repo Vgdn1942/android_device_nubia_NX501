@@ -1,13 +1,21 @@
-DEVICE_PACKAGE_OVERLAYS += device/nubia/NX501/overlay
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+$(call inherit-product-if-exists, vendor/nubia/NX501/NX501-vendor.mk)
+
+LOCAL_PATH := device/nubia/NX501
+
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
 # if the xhdpi doesn't exist.
-PRODUCT_AAPT_CONFIG      := large hdpi xhdpi xxhdpi
+PRODUCT_AAPT_CONFIG      := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-
-LOCAL_PATH := device/nubia/NX501
+PRODUCT_CHARACTERISTICS  := default
 
 # Snd_soc_msm
 PRODUCT_COPY_FILES += \
@@ -84,6 +92,7 @@ PRODUCT_COPY_FILES += \
 
 # Specific keys
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keys/Generic.kl:system/usr/keylayout/Generic.kl \
     $(LOCAL_PATH)/keys/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
     $(LOCAL_PATH)/keys/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
     $(LOCAL_PATH)/keys/cyttsp-i2c.kl:system/usr/keylayout/cyttsp-i2c.kl \
@@ -123,17 +132,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so
 
 # RAMDISK
-PRODUCT_PACKAGES += fstab.qcom
-PRODUCT_PACKAGES += init.qcom.rc
-PRODUCT_PACKAGES += init.qcom.sh
-PRODUCT_PACKAGES += init.qcom.usb.rc
-PRODUCT_PACKAGES += init.qcom.usb.sh
-PRODUCT_PACKAGES += init.target.rc
-PRODUCT_PACKAGES += ueventd.qcom.rc
-PRODUCT_PACKAGES += init.qcom.class_core.sh
-PRODUCT_PACKAGES += init.class_main.sh
-PRODUCT_PACKAGES += init.qcom.early_boot.sh
-PRODUCT_PACKAGES += init.qcom.syspart_fixup.sh
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.target.rc \
+    ueventd.qcom.rc \
+    init.qcom.class_core.sh \
+    init.class_main.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.syspart_fixup.sh
 
 # Poweroff charger
 PRODUCT_PACKAGES += \
@@ -292,11 +302,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Recovery adb
 ADDITIONAL_DEFAULT_PROPERTIES += \
-ro.adb.secure=0 \
-ro.secure=0 \
-persist.service.adb.enable=1 \
-persist.service.debuggable=1 \
-persist.sys.usb.config=mtp
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.config=mtp
 
 LIBART_IMG_HOST_BASE_ADDRESS   := 0x60000000
 LIBART_IMG_TARGET_BASE_ADDRESS := 0x70000000

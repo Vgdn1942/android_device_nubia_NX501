@@ -14,7 +14,8 @@
 # limitations under the License.
 #
 
-#add_lunch_combo cm_NX501-eng
-add_lunch_combo cm_NX501-userdebug
-#add_lunch_combo aosp_NX501-eng
-#add_lunch_combo aosp_NX501-userdebug
+for flavor in eng userdebug user; do
+    add_lunch_combo "full_NX501-${flavor}"
+    add_lunch_combo "cm_NX501-${flavor}"
+    add_lunch_combo "aosp_NX501-${flavor}"
+done
