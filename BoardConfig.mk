@@ -25,7 +25,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/nubia/NX501/include
 # Kernel inline build
 TARGET_KERNEL_SOURCE := kernel/nubia/NX501
 TARGET_KERNEL_CONFIG := Z5_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
 
 PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
 	, $(PRODUCT_COPY_FILES))
@@ -56,7 +56,7 @@ BOARD_USES_LEGACY_MMAP  := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Bionic
-MALLOC_IMPL := dlmalloc
+#MALLOC_IMPL := dlmalloc
 
 # Bootloader
 TARGET_NO_BOOTLOADER         := true
