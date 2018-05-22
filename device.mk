@@ -1,8 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
 $(call inherit-product-if-exists, vendor/nubia/NX501/NX501-vendor.mk)
 
 LOCAL_PATH := device/nubia/NX501
@@ -39,15 +36,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/configs/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/configs/usf_post_boot.sh:system/etc/usf_post_boot.sh \
+    $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
+    $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:/system/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
-
-PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
@@ -59,29 +55,14 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-PRODUCT_PACKAGES += \
-    libwfcu \
-    conn_init
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/hostapd.deny:system/etc/hostapd/hostapd.deny \
-    $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
 # Thermald
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/thermald/thermald.conf:system/etc/thermald-8064.conf
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    nfc_nci.pn54x.default \
-    NfcNci \
-    Tag
-
-# NFC feature files + configuration
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -101,6 +82,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
@@ -131,7 +113,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/gps/sec_config:system/etc/sec_config \
-    $(LOCAL_PATH)/gps/xtwifi.conf:system/etc/xtwifi.conf \
+    $(LOCAL_PATH)/gps/xtwifi.conf:system/etc/xtwifi.conf
 
 # TWRP fstab
 PRODUCT_COPY_FILES += \
@@ -190,7 +172,9 @@ PRODUCT_PACKAGES += \
     bluetoothd
 
 PRODUCT_PACKAGES += \
-    bdAddrLoader
+    bdAddrLoader \
+    libwfcu \
+    conn_init
 
 # QRNG
 PRODUCT_PACKAGES += \
@@ -245,7 +229,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-#    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
 
 # Power hal
 PRODUCT_PACKAGES += \
@@ -261,13 +244,11 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# NFC Support
+# NFC packages
 PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    PhaseBeam
+    nfc_nci.pn54x.default \
+    NfcNci \
+    Tag
 
 # Other apps
 PRODUCT_PACKAGES += \
@@ -294,6 +275,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.add_power_save=1 \
+    rol.ril.ext.ecclist=112,911,999,110,122,119,120,000,08,118 \
     ro.telephony.call_ring.multiple=0 \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=180
@@ -325,7 +308,7 @@ LIBART_IMG_HOST_BASE_ADDRESS   := 0x60000000
 LIBART_IMG_TARGET_BASE_ADDRESS := 0x70000000
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := nx501,NX501
+TARGET_OTA_ASSERT_DEVICE := nx501,NX501,nx50x,NX50X
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)

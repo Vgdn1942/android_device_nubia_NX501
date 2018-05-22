@@ -66,7 +66,6 @@ on init
     chmod 0660 /sys/devices/virtual/android_usb/android0/RF_MODE
     #ZTEMT end
 
-
 on fs
     mount_all fstab.qcom
 
@@ -79,6 +78,8 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/persist
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
+    restorecon_recursive /persist
+    mkdir /persist/data 0700 system system
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
@@ -129,6 +130,11 @@ service thermal-engine /system/bin/thermal-engine
    class main
    user root
    group root
+   disabled
+
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+   class main
+   user root
    disabled
 
 service rf4ce /system/bin/rf4ce
@@ -250,7 +256,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
    user system
    socket ims_rtpd stream 0660 system ims
-   group ims net_raw diag qcom_diag log
+   group ims net_raw diag qcom_diag log sdcard_rw
    disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1

@@ -28,6 +28,15 @@ bin/gsiff_daemon
 lib/libacdbloader.so
 lib/libaudcal.so
 lib/libcsd-client.so
+etc/firmware/dsps.b00
+etc/firmware/dsps.b01
+etc/firmware/dsps.b02
+etc/firmware/dsps.b03
+etc/firmware/dsps.b04
+etc/firmware/dsps.b05
+etc/firmware/dsps.mdt
+etc/firmware/wcd9310/wcd9310_anc.bin
+etc/firmware/wcd9310/wcd9310_mbhc.bin
 
 # Thermal
 bin/thermald
@@ -112,6 +121,21 @@ lib/libreference-ril.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
 
+# Modem
+etc/firmware/modem_fw._
+etc/firmware/q6.b00
+etc/firmware/q6.b01
+etc/firmware/q6.b03
+etc/firmware/q6.b04
+etc/firmware/q6.b05
+etc/firmware/q6.b06
+etc/firmware/q6.mdt
+etc/firmware/tzapps.b00
+etc/firmware/tzapps.b01
+etc/firmware/tzapps.b02
+etc/firmware/tzapps.b03
+etc/firmware/tzapps.mdt
+
 # Sensors
 bin/sensors.qcom
 lib/libsensor1.so
@@ -120,6 +144,7 @@ lib/libsensor1.so
 lib/libadsprpc.so
 
 # bins
+bin/lowi-server
 bin/akmd8963
 bin/ATFWD-daemon
 bin/btnvtool
@@ -132,6 +157,7 @@ bin/location-mq
 bin/mdm_helper
 bin/mm-pp-daemon
 bin/mm-qcamera-daemon
+bin/mpdecision
 bin/nl_listener
 bin/port-bridge
 bin/qseecomd
@@ -150,8 +176,6 @@ etc/firmware/cyttsp_8064_mtp.hex
 etc/firmware/cyttsp_8960_cdp.hex
 
 # nfc
-etc/libnfc-brcm.conf
-etc/libnfc-nxp.conf
 lib/hw/nfc.default.so
 vendor/firmware/libpn544_fw_C2_110_14.so
 vendor/firmware/libpn544_fw.so
@@ -251,3 +275,10 @@ vendor/lib/lib-imsvt.so
 
 #Wcnss
 bin/wcnss_service
+etc/firmware/wcnss.b00
+etc/firmware/wcnss.b01
+etc/firmware/wcnss.b02
+etc/firmware/wcnss.b04
+etc/firmware/wcnss.b05
+etc/firmware/wcnss.mdt
+

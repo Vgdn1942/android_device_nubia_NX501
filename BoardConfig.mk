@@ -25,7 +25,10 @@ TARGET_SPECIFIC_HEADER_PATH := device/nubia/NX501/include
 # Kernel inline build
 TARGET_KERNEL_SOURCE := kernel/nubia/NX501
 TARGET_KERNEL_CONFIG := Z5_defconfig
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.9
+
+PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
+	, $(PRODUCT_COPY_FILES))
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -52,6 +55,9 @@ TARGET_USES_LOGD:=false
 BOARD_USES_LEGACY_MMAP  := true
 EXTENDED_FONT_FOOTPRINT := true
 
+# Bionic
+MALLOC_IMPL := dlmalloc
+
 # Bootloader
 TARGET_NO_BOOTLOADER         := true
 TARGET_BOOTLOADER_NAME       := NX501
@@ -65,7 +71,7 @@ BOARD_LIB_DUMPSTATE        := libdumpstate.NX501
 BOARD_EGL_CFG              := device/nubia/NX501/configs/egl.cfg
 
 # Kernel 
-BOARD_KERNEL_CMDLINE  := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=permissive androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE  := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=4 androidboot.selinux=disabled androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE     := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
@@ -144,6 +150,7 @@ BOARD_NFC_DEVICE := "/dev/pn544"
 
 # RIL class
 BOARD_RIL_CLASS := ../../../device/nubia/NX501/ril/
+BOARD_PROVIDES_LIBRIL := true
 
 # Recovery
 #TARGET_NO_RECOVERY              := true
@@ -153,7 +160,7 @@ RECOVERY_FSTAB_VERSION           := 2
 #BOARD_SUPPRESS_SECURE_ERASE     := true
 BOARD_HAS_NO_SELECT_BUTTON       := true
 BOARD_HAS_LARGE_FILESYSTEM       := true
-#BORAD_REC_LANG_CHINESE          := true
+#BOARD_REC_LANG_CHINESE          := true
 TARGET_RECOVERY_PIXEL_FORMAT     := "RGBX_8888"
 #TARGET_RECOVERY_INITRC          := device/nubia/NX501/recovery/init.rc
 BOARD_CUSTOM_GRAPHICS            := ../../../device/nubia/NX501/recovery/graphics.c
@@ -198,3 +205,4 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 #WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
+
