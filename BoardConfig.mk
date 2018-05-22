@@ -145,7 +145,7 @@ BLUETOOTH_HCI_USE_MCT                       := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nubia/NX501/bluetooth
 
 # NFC
-BOARD_NFC_CHIPSET := pn544
+BOARD_NFC_CHIPSET := pn547
 BOARD_NFC_DEVICE := "/dev/pn544"
 
 # RIL class

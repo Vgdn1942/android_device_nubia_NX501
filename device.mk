@@ -246,7 +246,7 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.pn54x.default \
+    nfc_nci.msm8960 \
     NfcNci \
     Tag
 
